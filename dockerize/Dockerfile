@@ -5,7 +5,7 @@ MAINTAINER chenlijun
 ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt-get update \
-     && apt-get install -y gcc python-dev python-setuptools libc6-dev opencc
+     && apt-get install -y gcc python-dev python-setuptools libc6-dev git opencc
 
 # swcs
 ENV SWCS_DOWNLOAD_URL http://www.xunsearch.com/scws/down/scws-1.2.2.tar.bz2
