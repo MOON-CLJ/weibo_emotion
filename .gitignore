@@ -1,0 +1,40 @@
+/log/*.log
+/tmp
+/simple
+/data
+/stub
+/simplehaha
+/test/_hehe*
+test/leveldb*
+test/plyvel*
+*.js
+*.bson
+
+*.py[co]
+*.sw[pon]
+
+# Packages
+*.egg
+*.egg-info
+.ropeproject
+dist
+build
+eggs
+parts
+bin
+var
+sdist
+develop-eggs
+.installed.cfg
+
+# Installer logs
+pip-log.txt
+
+# Unit test / coverage reports
+.coverage
+.tox
+
+#Translations
+*.mo
+
+.DS_Store
