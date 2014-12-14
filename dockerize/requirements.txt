@@ -3,3 +3,7 @@ web.py==0.37
 wsgiref==0.1.2
 OpenCC==0.1
 argparse==1.2.1
+gensim==0.10.3
+numpy==1.9.1
+scipy==0.14.0
+six==1.8.0
