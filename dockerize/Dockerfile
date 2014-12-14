@@ -41,4 +41,9 @@ RUN buildDeps='make curl bzip2'; \
     && apt-get purge -y $buildDeps \
     && apt-get autoremove -y
 
-CMD [ "/bin/bash" ]
+RUN easy_install pip
+RUN pip install -r requirements.txt
+
+EXPOSE 8080
+
+CMD ["python", "app.py"]
