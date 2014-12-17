@@ -13,7 +13,9 @@ ENV SWCS_DOWNLOAD_SHA1 8ded9125036cbeadffb86c7ee3f47bb103b99481
 ENV SWCS_DICT_CHS_UTF8_DOWNLOAD_URL http://www.xunsearch.com/scws/down/scws-dict-chs-utf8.tar.bz2
 ENV SWCS_DICT_CHT_UTF8_DOWNLOAD_URL http://www.xunsearch.com/scws/down/scws-dict-cht-utf8.tar.bz2
 
-ADD data /
+RUN mkdir /data
+
+ADD data /data
 ADD app.py /
 ADD requirements.txt /
 ADD triple_sentiment_classifier.py /
