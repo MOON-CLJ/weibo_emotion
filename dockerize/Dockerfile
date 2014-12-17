@@ -33,8 +33,8 @@ RUN buildDeps='make curl bzip2'; \
     && make -C /usr/src/swcs install \
     && curl -sSL "$SWCS_DICT_CHS_UTF8_DOWNLOAD_URL" -o scws-dict-chs-utf8.tar.bz2 \
     && curl -sSL "$SWCS_DICT_CHT_UTF8_DOWNLOAD_URL" -o scws-dict-cht-utf8.tar.bz2 \
-    && tar xvjf scws-dict-chs-utf8.tar.bz2 -C /usr/local/scws/etc --strip-components=1 \
-    && tar xvjf scws-dict-cht-utf8.tar.bz2 -C /usr/local/scws/etc --strip-components=1 \
+    && tar xvjf scws-dict-chs-utf8.tar.bz2 -C /usr/local/scws/etc \
+    && tar xvjf scws-dict-cht-utf8.tar.bz2 -C /usr/local/scws/etc \
     && rm scws-dict-chs-utf8.tar.bz2 \
     && rm scws-dict-cht-utf8.tar.bz2 \
     && echo "/usr/local/scws/lib/" >> /etc/ld.so.conf \
