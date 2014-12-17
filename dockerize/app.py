@@ -27,8 +27,11 @@ urls = (
 
 class DiamondClassifier(object):
     def POST(self):
-        text = u"哈哈"
-        return _diamond_classifier(text)
+        i = web.input()
+        if hasattr(i, 'text'):
+            print [i.text]
+            return str(_diamond_classifier(i.text))
+        return "-1"
 
 
 if __name__ == "__main__":
