@@ -2,8 +2,14 @@
 
 import time
 import web
+import logging
 
 from triple_sentiment_classifier import triple_classifier
+
+
+logging.basicConfig(format='%(asctime)s %(levelname)s [%(name)s]: %(message)s')
+logger = logging.getLogger('weibo_emotion.app')
+logger.setLevel(logging.INFO)
 
 
 def _diamond_classifier(text):
@@ -35,7 +41,7 @@ class DiamondClassifier(object):
         self.cnt += 1
         if self.cnt % 1000 == 0:
             now = time.time()
-            print now - self.last_time
+            logger.info(str(now - self.last_time))
             self.last_time = now
         i = web.input()
         if hasattr(i, 'text'):
