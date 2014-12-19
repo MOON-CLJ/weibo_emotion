@@ -26,6 +26,12 @@ class AppTestCase(unittest.TestCase):
         self.assertEqual(r.text, '0')
         self.assertEqual(r.status_code, 200)
 
+    def test_text_cn_hehe(self):
+        payload = {'text': u'呵呵'}
+        r = requests.post(self._url, data=payload)
+        self.assertEqual(r.text, '1')
+        self.assertEqual(r.status_code, 200)
+
 
 if __name__ == '__main__':
     unittest.main()
