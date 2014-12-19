@@ -33,7 +33,8 @@ class DiamondClassifier(object):
             return str(_diamond_classifier(i.text))
         return "-1"
 
+app = web.application(urls, globals())
+
 
 if __name__ == "__main__":
-    app = web.application(urls, globals())
     app.run()
