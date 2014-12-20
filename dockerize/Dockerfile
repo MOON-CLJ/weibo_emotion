@@ -13,13 +13,6 @@ ENV SWCS_DOWNLOAD_SHA1 8ded9125036cbeadffb86c7ee3f47bb103b99481
 ENV SWCS_DICT_CHS_UTF8_DOWNLOAD_URL http://www.xunsearch.com/scws/down/scws-dict-chs-utf8.tar.bz2
 ENV SWCS_DICT_CHT_UTF8_DOWNLOAD_URL http://www.xunsearch.com/scws/down/scws-dict-cht-utf8.tar.bz2
 
-RUN mkdir /data
-
-ADD data /data
-ADD app.py /
-ADD requirements.txt /
-ADD triple_sentiment_classifier.py /
-
 RUN buildDeps='make curl bzip2'; \
     set -x; \
     apt-get update && apt-get install -y $buildDeps --no-install-recommends \
@@ -42,6 +35,13 @@ RUN buildDeps='make curl bzip2'; \
     && rm -r /usr/src/swcs \
     && apt-get purge -y $buildDeps \
     && apt-get autoremove -y
+
+RUN mkdir /data
+
+ADD data /data
+ADD app.py /
+ADD requirements.txt /
+ADD triple_sentiment_classifier.py /
 
 RUN easy_install pip
 RUN pip install -r requirements.txt
