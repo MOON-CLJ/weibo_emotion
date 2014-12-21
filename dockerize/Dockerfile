@@ -43,9 +43,10 @@ RUN mkdir /data
 
 ADD data /data
 ADD app.py /
+ADD run.py /
 ADD requirements.txt /
 ADD triple_sentiment_classifier.py /
 
-EXPOSE 8080
+EXPOSE 8000
 
-CMD ["python", "app.py"]
+CMD ["python", "run.py"]

@@ -1,9 +1,10 @@
 -e git+https://github.com/MOON-CLJ/pyscws@d2f2e106a7be82e9ac0e953bc5314250c6895d7e#egg=scws-master
-web.py==0.37
-wsgiref==0.1.2
 OpenCC==0.1
 argparse==1.2.1
 gensim==0.10.3
 numpy==1.9.1
 scipy==0.14.0
 six==1.8.0
+falcon==0.1.10
+gunicorn==19.1.1
+python-mimeparse==0.1.4
