@@ -37,9 +37,14 @@ def gen_maestro_yaml():
                 data["services"][service_name]["instances"][container_name] = {
                     "ship": ships[i],
                     "ports": {"client": {"external": container_port, "exposed": 8000}},
+                    "lifecycle": {
+                        "running": [{"type": "tcp", "port": "client"}],
+                    },
                 }
 
         yaml.dump(data, conf, default_flow_style=False)
 
 if __name__ == "__main__":
+    # vi /etc/default/docker
+    # DOCKER_OPTS="-H unix:///var/run/docker.sock -H tcp://0.0.0.0:2375"
     gen_maestro_yaml()
