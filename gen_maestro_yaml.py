@@ -37,9 +37,6 @@ def gen_maestro_yaml():
                 data["services"][service_name]["instances"][container_name] = {
                     "ship": ships[i],
                     "ports": {"client": {"external": container_port, "exposed": 8000}},
-                    "lifecycle": {
-                        "running": [{"type": "tcp", "port": "client"}],
-                    },
                 }
 
         yaml.dump(data, conf, default_flow_style=False)

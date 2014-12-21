@@ -7,7 +7,7 @@ backports.ssl-match-hostname==3.4.0.2
 docker-py==0.5.3
 ecdsa==0.11
 hiredis==0.1.5
--e git+https://github.com/MOON-CLJ/maestro-ng@df7f41f701225fde07482f0ab1bcf1ee58d4d588#egg=maestro-master
+-e git+https://github.com/MOON-CLJ/maestro-ng@cd4e7446a6f3387f7d9f963ccf347265927ea2a4#egg=maestro-master
 paramiko==1.15.1
 pycrypto==2.6.1
 redis==2.10.3
