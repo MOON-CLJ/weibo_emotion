@@ -1,0 +1,17 @@
+Jinja2==2.7.3
+MarkupSafe==0.23
+PyYAML==3.11
+ansicolors==1.0.2
+argparse==1.2.1
+backports.ssl-match-hostname==3.4.0.2
+docker-py==0.5.3
+ecdsa==0.11
+hiredis==0.1.5
+-e git+https://github.com/MOON-CLJ/maestro-ng@0c288a032ad86f0b007bc63f250b59085edbe1cc#egg=maestro-master
+paramiko==1.15.1
+pycrypto==2.6.1
+redis==2.10.3
+requests==2.4.3
+six==1.8.0
+websocket-client==0.21.0
+wsgiref==0.1.2
