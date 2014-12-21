@@ -36,6 +36,7 @@ RUN buildDeps='make curl bzip2'; \
     && apt-get purge -y $buildDeps \
     && apt-get autoremove -y
 
+ADD requirements.txt /
 RUN easy_install pip
 RUN pip install -r requirements.txt
 
@@ -44,7 +45,6 @@ RUN mkdir /data
 ADD data /data
 ADD app.py /
 ADD run.py /
-ADD requirements.txt /
 ADD triple_sentiment_classifier.py /
 
 EXPOSE 8000
