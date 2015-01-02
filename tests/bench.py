@@ -8,7 +8,7 @@ url_fmt = 'http://127.0.0.1:%s/diamond_classifier'
 urls = [url_fmt % (8000 + i) for i in range(10)]
 
 s = requests.Session()
-payload = '呵呵'
+payload = {'text': u'呵呵'}
 
 count = 1
 last = time.time()
