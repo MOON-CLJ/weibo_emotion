@@ -5,7 +5,7 @@ import yaml
 
 cluster_name = "weibo-emotion-cluster"
 ships = ["219.224.135.93"]
-base_image = "weibo_emotion:1.2"
+base_image = "weibo_emotion:1.3"
 base_port = 8000
 num_instance_per_ship = 10
 
@@ -37,6 +37,9 @@ def gen_maestro_yaml():
                 data["services"][service_name]["instances"][container_name] = {
                     "ship": ships[i],
                     "ports": {"client": {"external": container_port, "exposed": 8000}},
+                    "lifecycle": {
+                        "running": [{"type": "http", "port": "client"}],
+                    },
                 }
 
         yaml.dump(data, conf, default_flow_style=False)

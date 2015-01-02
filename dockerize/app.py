@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-import falcon
+import web
 
 from triple_sentiment_classifier import triple_classifier
 
@@ -20,16 +20,27 @@ def _diamond_classifier(text):
     return sentiment
 
 
-class DiamondClassifierResource:
-    def on_post(self, req, resp):
-        body = req.stream.read()
-        text = body.decode('utf-8', 'ignore')
-        resp.body = (str(_diamond_classifier(text)))
-        resp.status = falcon.HTTP_200
+class Ping(object):
+    def get(self):
+        text = u"哈哈"
+        return _diamond_classifier(text)
 
-# falcon.API instances are callable WSGI apps
-app = falcon.API()
 
-diamond_classifier = DiamondClassifierResource()
+class DiamondClassifier(object):
+    def POST(self):
+        i = web.input()
+        if hasattr(i, 'text'):
+            return str(_diamond_classifier(i.text))
+        return "-1"
 
-app.add_route('/diamond_classifier', diamond_classifier)
+urls = (
+    '/', 'Ping',
+    '/diamond_classifier', 'DiamondClassifier'
+)
+
+app = web.application(urls, globals())
+web.config.debug = False
+wsgiapp = app.wsgifunc()
+
+if __name__ == "__main__":
+    app.run()
