@@ -21,7 +21,7 @@ def _diamond_classifier(text):
 
 
 class Ping(object):
-    def get(self):
+    def GET(self):
         text = u"哈哈"
         return _diamond_classifier(text)
 
