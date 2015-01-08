@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 
-import web
+import tornado.ioloop
+import tornado.web
+
 
 from triple_sentiment_classifier import triple_classifier
 
@@ -20,27 +22,23 @@ def _diamond_classifier(text):
     return sentiment
 
 
-class Ping(object):
-    def GET(self):
+class PingHandler(tornado.web.RequestHandler):
+    def get(self):
         text = u"哈哈"
-        return _diamond_classifier(text)
+        self.write(str(_diamond_classifier(text)))
 
 
-class DiamondClassifier(object):
-    def POST(self):
-        i = web.input()
-        if hasattr(i, 'text'):
-            return str(_diamond_classifier(i.text))
-        return "-1"
+class DiamondClassifier(tornado.web.RequestHandler):
+    def post(self):
+        text = self.get_argument('text')
+        self.write(str(_diamond_classifier(text)))
 
-urls = (
-    '/', 'Ping',
-    '/diamond_classifier', 'DiamondClassifier'
-)
 
-app = web.application(urls, globals())
-web.config.debug = False
-wsgiapp = app.wsgifunc()
+application = tornado.web.Application([
+    (r'/', PingHandler),
+    (r'/diamond_classifier', DiamondClassifier),
+])
 
 if __name__ == "__main__":
-    app.run()
+    application.listen(8000)
+    tornado.ioloop.IOLoop.instance().start()

@@ -4,6 +4,8 @@ MAINTAINER chenlijun
 
 ENV DEBIAN_FRONTEND noninteractive
 
+ADD sources.list /etc/apt/sources.list
+
 RUN apt-get update \
      && apt-get install -y gcc python-dev python-setuptools libc6-dev git opencc python-numpy python-scipy gfortran libopenblas-dev liblapack-dev
 
@@ -36,6 +38,9 @@ RUN buildDeps='make curl bzip2'; \
     && apt-get purge -y $buildDeps \
     && apt-get autoremove -y
 
+# Set timezone to Shanghai
+RUN cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+
 ADD requirements.txt /
 RUN easy_install pip
 RUN pip install -r requirements.txt
@@ -44,9 +49,8 @@ RUN mkdir /data
 
 ADD data /data
 ADD app.py /
-ADD run.py /
 ADD triple_sentiment_classifier.py /
 
 EXPOSE 8000
 
-CMD ["python", "run.py"]
+CMD ["python", "app.py"]

@@ -13,7 +13,9 @@ payload = {'text': u'呵呵'}
 count = 1
 last = time.time()
 while 1:
-    s.post(urls[count % 10], data=payload)
+    r = s.post(urls[count % 10], data=payload)
+    if r.text != u'1':
+        raise ValueError()
     count += 1
     if count % 1000 == 0:
         now = time.time()
