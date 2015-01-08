@@ -7,12 +7,7 @@ import requests
 class AppTestCase(unittest.TestCase):
     def setUp(self):
         super(AppTestCase, self).setUp()
-        self._url = "http://127.0.0.1:8080/diamond_classifier"
-
-    def test_no_text(self):
-        r = requests.post(self._url)
-        self.assertEqual(r.text, '-1')
-        self.assertEqual(r.status_code, 200)
+        self._url = "http://127.0.0.1:8000/diamond_classifier"
 
     def test_text_hehe(self):
         payload = {'text': 'hehe'}
