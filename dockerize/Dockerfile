@@ -49,7 +49,6 @@ RUN mkdir /data
 
 ADD data /data
 ADD app.py /
-ADD run.py /
 ADD triple_sentiment_classifier.py /
 
 EXPOSE 8000

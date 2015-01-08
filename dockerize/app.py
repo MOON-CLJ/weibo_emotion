@@ -25,15 +25,15 @@ def _diamond_classifier(text):
 class PingHandler(tornado.web.RequestHandler):
     def get(self):
         text = u"哈哈"
-        self.write(_diamond_classifier(text))
+        self.write(str(_diamond_classifier(text)))
 
 
 class DiamondClassifier(tornado.web.RequestHandler):
     def post(self):
         text = self.get_argument('text')
         if text:
-            return str(_diamond_classifier(text))
-        return "-1"
+            self.write(str(_diamond_classifier(text)))
+        self.write("-1")
 
 
 application = tornado.web.Application([
